@@ -10,18 +10,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-
-      - name: Descargar el código
+      - name: Descargar código
         uses: actions/checkout@v4
-
-      - name: Instalar Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
 
       - name: Instalar Surge
         run: npm install -g surge
 
-      - name: Desplegar a Surge
-        run: surge ./ ${{ secrets.SURGE_DOMAIN }} --token ${{ secrets.SURGE_TOKEN }}
-        
+      - name: Deploy a Surge
+        run: surge ./ --domain tu-nombre.surge.sh
+        env:
+          SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
