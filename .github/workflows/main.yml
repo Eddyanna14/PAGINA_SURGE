@@ -13,7 +13,7 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v4
 
-      - name: Instalar Node.js
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
@@ -22,6 +22,9 @@ jobs:
         run: npm install -g surge
 
       - name: Publicar en Surge
-        run: surge ./ --domain eddyanna-practica.surge.sh
+        run: |
+          surge ./ --domain eddyanna-practica.surge.sh
+          echo "✅ Despliegue completado"
+          echo "🌐 https://eddyanna-practica.surge.sh"
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
