@@ -13,10 +13,15 @@ jobs:
       - name: Descargar código
         uses: actions/checkout@v4
 
+      - name: Instalar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Instalar Surge
         run: npm install -g surge
 
-      - name: Deploy a Surge
-        run: surge ./ --domain tu-nombre.surge.sh
+      - name: Publicar en Surge
+        run: surge ./ --domain eddyanna-practica.surge.sh
         env:
           SURGE_TOKEN: ${{ secrets.SURGE_TOKEN }}
